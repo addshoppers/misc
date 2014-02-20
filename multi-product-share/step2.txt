@@ -1,6 +1,6 @@
 /* **************************
 Copy and paste this code in the footer of your category page, or any page that has multiple products that you want to have unique sharing links
-************************** */
+************************** */ 
 
 <script type="text/javascript">
   var purl="", pimgurl="", pname="", pprice="";

@@ -2,7 +2,7 @@
 NOTE: This is just example code, do not copy and paste this on your site. 
 Just view how and where the itemprop= tags are places.
 Product example with itemprop tags added 
-******************** */
+******************** */ 
 
 <ul>
 	<li class="item first" id="firstprod">
