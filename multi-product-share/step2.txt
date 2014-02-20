@@ -1,0 +1,51 @@
+/* **************************
+Copy and paste this code in the footer of your category page, or any page that has multiple products that you want to have unique sharing links
+************************** */
+
+<script type="text/javascript">
+  var purl="", pimgurl="", pname="", pprice="";
+  function defineShare(productId)
+  {
+    getChildren(productId.parentNode.childNodes);
+    if(purl && pimgurl && pname && pprice){
+      AddShoppersTracking = {
+        image: pimgurl,
+        url: purl,
+        name: pname,
+        description: "",
+        price: pprice
+      }    
+    } 
+    AddShoppersWidget.onload();
+    AddShoppersWidget.API.Social.app("email");
+  }
+
+  function getChildren(element){
+    var els = element, i = 0, price;
+    for(i; i < els.length; i++) {
+      var currNode=els[i], ip;
+      if(currNode.getAttribute){
+        ip = currNode.getAttribute('itemprop');
+      }
+      if(ip){
+        if(currNode.tagName && ip == "produrl"){
+          if(currNode.tagName == 'A'){
+            purl= currNode.getAttribute('href');
+          }
+        }
+        if(currNode.tagName && ip == "prodname"){
+          pname = currNode.innerHTML;
+        }
+        if(currNode.tagName && ip == "prodimageurl"){
+          pimgurl =  currNode.src;
+        }
+        if(currNode.tagName && ip == "prodprice"){
+          pprice = currNode.innerHTML;
+        }
+      }
+      if(currNode.childNodes.length> 0){
+        getChildren(currNode.childNodes);
+      }
+    }
+  }
+</script>

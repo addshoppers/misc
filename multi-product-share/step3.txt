@@ -1,0 +1,16 @@
+/* **************************
+This code is an example of a sharing link that will need to be above/below or around the product you wish to share.
+This can be virtually any html element as long as you put onclick="defineShare(this);" within the tag.
+Below are examples of this sharing call to action using an A link, Button and Image.
+************************** */
+
+/*** A link Example: ***/
+<a href="#" onclick="defineShare(this);">
+	SHARE THIS PRODUCT!
+</a>
+
+/*** Button Example: ***/
+<input type="button" onclick="defineShare(this);" value="Share Button" />
+
+/*** Image Example: ***/
+<img src="image.jpg" onclick="defineShare(this);" alt="multi share image" />

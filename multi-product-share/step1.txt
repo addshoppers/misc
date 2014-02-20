@@ -1,0 +1,25 @@
+/* ******************** 
+NOTE: This is just example code, do not copy and paste this on your site. 
+Just view how and where the itemprop= tags are places.
+Product example with itemprop tags added 
+******************** */
+
+<ul>
+	<li class="item first" id="firstprod">
+		<a href="http://test.com/antidote" title="Antidote" itemprop="produrl">
+    			<img itemprop="prodimageurl" src="antidote.jpg" alt="image" />
+  		</a>
+
+    		<a href="/antidote" itemprop="prodname">
+      			The Antidote
+    		</a>
+
+      		<span class="price" itemprop="prodprice">$999.00</span>                                    
+	
+  		<a href="#" onclick="defineShare(this);" id="sharelink">MULTISHARE!!!!</a>
+
+    		<button type="button" title="Add to Cart" class="button btn-cart" >
+      			Add to Cart
+    		</button>
+	</li>
+</ul>
