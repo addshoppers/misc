@@ -7,7 +7,7 @@ Copy and paste this code in the footer of your category page, or any page that h
   function defineShare(productId)
   {
     getChildren(productId.parentNode.childNodes);
-    if(purl && pimgurl && pname && pprice){
+    if(purl && pimgurl && pname){
       AddShoppersTracking = {
         image: pimgurl,
         url: purl,
