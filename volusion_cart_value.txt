@@ -1,0 +1,1 @@
+var cart_value = parseFloat($('.colors_productprice b').text().replace('$',''));
