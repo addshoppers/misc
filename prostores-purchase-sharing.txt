@@ -1,0 +1,26 @@
+<ss:if test="$invoice.itemCount > '1'">
+   <script type="text/javascript">
+    AddShoppersTracking = {
+      auto: true,
+      header: ",
+      image: "",
+      url: "",
+      name: "",
+      description:  ""
+   }
+   </script>
+<ss:else/>
+   <ss:foreach item='item' within='$invoice.details'>
+   <script type="text/javascript">
+    AddShoppersTracking = {
+      auto: true,
+      header: "Share your order!",
+      image: "<ss:value source='$item.product.photoImage'/>",
+      url: "<ss:value source='$item.product.displayUrl'/>?ps=1",
+      name: "<ss:value source='$item.product.name'/>",
+      description:  "<ss:value source='$item.product.brief'/>",
+      price: "<ss:value source='$item.product.displayPrice'/>"
+   }
+   </script>
+   </ss:foreach>
+</ss:if>
