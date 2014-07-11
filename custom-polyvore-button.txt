@@ -1,1 +1,18 @@
-t
+<script type="text/javascript"> 			
+function init() {
+   AddShoppersWidget.API.Event.bind("load", addshoppers_polyvore);		
+};
+function addshoppers_polyvore() {		
+	document.getElementById("addshoppers_polyvore").href= "http://www.polyvore.com/cgi/add?title=" + encodeURIComponent(AddShoppersWidget.product) + "&imgurl=" + encodeURIComponent(AddShoppersWidget.image) + "&url=" + encodeURIComponent(document.URL + (window.location.search ? '&' : '?') + "custom_ref=" + AddShoppersWidget.short_id + "G"&description=" + encodeURIComponent(AddShoppersWidget.description) + "&price=" + encodeURIComponent(AddShoppersWidget.price);
+}
+if (window.addEventListener) {			
+   window.addEventListener("load", init, false); 
+} else {
+   document.onreadystatechange = function() { 
+    if(document.readyState in {loaded: 1, complete: 1}) {
+	document.onreadystatechange = null; 
+       init();			
+    } 
+  }					
+} 
+</script>
