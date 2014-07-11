@@ -3,7 +3,7 @@ function init() {
    AddShoppersWidget.API.Event.bind("load", addshoppers_polyvore);		
 };
 function addshoppers_polyvore() {		
-	document.getElementById("addshoppers_polyvore").href= "http://www.polyvore.com/cgi/add?title=" + encodeURIComponent(AddShoppersWidget.product) + "&imgurl=" + encodeURIComponent(AddShoppersWidget.image) + "&url=" + encodeURIComponent(document.URL + (window.location.search ? '&' : '?') + "custom_ref=" + AddShoppersWidget.short_id + "G"&description=" + encodeURIComponent(AddShoppersWidget.description) + "&price=" + encodeURIComponent(AddShoppersWidget.price);
+	document.getElementById("addshoppers_polyvore").href= "http://www.polyvore.com/cgi/add?title=" + encodeURIComponent(AddShoppersWidget.product) + "&imgurl=" + encodeURIComponent(AddShoppersWidget.image) + "&url=" + encodeURIComponent(document.URL + (window.location.search ? '&' : '?') + "custom_ref=" + AddShoppersWidget.short_id + "V") + "&description=" + encodeURIComponent(AddShoppersWidget.description) + "&price=" + encodeURIComponent(AddShoppersWidget.price);
 }
 if (window.addEventListener) {			
    window.addEventListener("load", init, false); 
