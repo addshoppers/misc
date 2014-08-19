@@ -1,0 +1,23 @@
+<a class="addshoppers_linkedin" href="#" target="_blank"></a>
+
+<script type="text/javascript">
+	
+function init() {
+   AddShoppersWidget.API.Event.bind("load", addshoppers_linkedin);	
+};
+function addshoppers_linkedin() {		
+	var linkedin_url = "http://www.linkedin.com/shareArticle?mini=true&url=" + encodeURIComponent(document.URL + (window.location.search ? '&' : '?') + "custom_ref=" + AddShoppersWidget.short_id + "G") + "&title=" + AddShoppersWidget.product + "&summary=" + AddShoppersWidget.description;
+	jQuery(".addshoppers_linkedin").attr("href", google_plus_url);
+
+	
+if (window.addEventListener) {			
+   window.addEventListener("load", init, false); 
+} else {
+   document.onreadystatechange = function() { 
+	if(document.readyState in {loaded: 1, complete: 1}) {
+	document.onreadystatechange = null; 
+	   init();			
+	} 
+  }					
+} 
+</script>
