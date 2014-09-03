@@ -7,7 +7,7 @@ function init() {
 };
 function addshoppers_linkedin() {		
 	var linkedin_url = "http://www.linkedin.com/shareArticle?mini=true&url=" + encodeURIComponent(document.URL + (window.location.search ? '&' : '?') + "custom_ref=" + AddShoppersWidget.short_id + "G") + "&title=" + AddShoppersWidget.product + "&summary=" + AddShoppersWidget.description;
-	jQuery(".addshoppers_linkedin").attr("href", google_plus_url);
+	jQuery(".addshoppers_linkedin").attr("href", linkedin_url);
 
 	
 if (window.addEventListener) {			
