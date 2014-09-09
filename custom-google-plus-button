@@ -8,7 +8,7 @@ function addshoppers_googleplus() {
 	// Pure JS version, done by ID
 	//document.getElementById("addshoppers_googleplus").href= googleplus_url;
 	
-	jQuery version, done by class
+	//jQuery version, done by class
 	jQuery("a.addshoppers_googleplus").attr("href", googleplus_url)
 }
 if (window.addEventListener) {			
