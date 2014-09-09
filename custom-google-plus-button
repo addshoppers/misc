@@ -2,8 +2,14 @@
 function init() {
    AddShoppersWidget.API.Event.bind("load", addshoppers_googleplus);		
 };
-function addshoppers_googleplus() {		
-	document.getElementById("addshoppers_googleplus").href= "https://plus.google.com/share?url=" + encodeURIComponent(document.URL + (window.location.search ? '&' : '?') + "custom_ref=" + AddShoppersWidget.short_id + "G");
+function addshoppers_googleplus() {	
+	var googleplus_url = "https://plus.google.com/share?url=" + encodeURIComponent(document.URL + (window.location.search ? '&' : '?') + "custom_ref=" + AddShoppersWidget.short_id + "G");
+
+	// Pure JS version, done by ID
+	//document.getElementById("addshoppers_googleplus").href= googleplus_url;
+	
+	jQuery version, done by class
+	jQuery("a.addshoppers_googleplus").attr("href", googleplus_url)
 }
 if (window.addEventListener) {			
    window.addEventListener("load", init, false); 
