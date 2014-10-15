@@ -1,0 +1,29 @@
+1. Changes the email button to a LinkedIn button.
+2. Moves the LinkedIn button first.
+3. Moves the FB button before the Twitter button.
+
+
+<script type="text/javascript">
+	function init() {
+            AddShoppersWidget.API.Event.bind("load", function() {
+                AddShoppersWidget._build_box();
+                jQuery('.big-M').addClass('linkedin-24 s-24').removeClass('big-M big');
+                jQuery('#share-button-M').insertBefore(jQuery('#share-button-T')).css('margin-right','8px');
+                jQuery('#share-button-F').insertBefore(jQuery('#share-button-T'));
+                var linkedin_url = "http://www.linkedin.com/shareArticle?mini=true&url=" + encodeURIComponent(document.URL + (window.location.search ? '&' : '?') + "custom_ref=" + AddShoppersWidget.short_id + "G") + "&title=" + AddShoppersWidget.product + "&summary=" + AddShoppersWidget.description;
+				jQuery('#share-button-M .linkedin-24').html('<a href="'+linkedin_url+'" target="_blank" onclick="AddShoppersWidget.app(\'linkedin\', true)" style="position: absolute; width: 24px; height: 24px; left: 0; top: 0;"></a>');
+            });
+        };
+
+        // Bind events
+        if (window.addEventListener) {
+            window.addEventListener("load", init, false);
+        } else {
+            document.onreadystatechange = function() {
+                if(document.readyState in {loaded: 1, complete: 1}) {
+                    document.onreadystatechange = null;
+                    init();
+                }
+            }
+        }
+	</script>
