@@ -1,7 +1,7 @@
 <!-- AddShoppers ROI Tracking Start -->
 <script type="text/javascript">
 AddShoppersConversion = {
-        order_id: '{{ id }}',
+        order_id: '{{ order_number }}',
         value: '{{ total_price | money_without_currency }}'
 };
 var js = document.createElement('script'); js.type = 'text/javascript'; js.async = true; js.id = 'AddShoppers';
