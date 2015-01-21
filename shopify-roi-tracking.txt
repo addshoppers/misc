@@ -1,0 +1,11 @@
+<!-- AddShoppers ROI Tracking Start -->
+<script type="text/javascript">
+AddShoppersConversion = {
+        order_id: '{{ id }}',
+        value: '{{ total_price | money_without_currency }}'
+};
+var js = document.createElement('script'); js.type = 'text/javascript'; js.async = true; js.id = 'AddShoppers';
+js.src = ('https:' == document.location.protocol ? 'https://shop.pe/widget/' : 'http://cdn.shop.pe/widget/') + 'widget_async.js#XXXXXX';
+document.getElementsByTagName("head")[0].appendChild(js);
+</script>
+<!-- AddShoppers ROI Tracking End -->
