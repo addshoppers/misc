@@ -1,3 +1,10 @@
+<!--
+1. go to shopify admin, on the left go to settings -> checkout >> scroll down to "order processing" 
+and paste the code below at the bottom of the "additional content & scripts" section: http://prntscr.com/6hlai8
+
+2. code to paste: 
+-->
+
 <!-- AddShoppers ROI Tracking Start -->
 <script type="text/javascript">
 AddShoppersConversion = {
