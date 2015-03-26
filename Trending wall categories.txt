@@ -1,0 +1,8 @@
+//trending wall category code on product pages:
+<script>
+AddShoppersTracking = {category: "PRODUCT_CATEGORY_HERE"}; 
+</script>
+
+
+//code to display the wall on category pages:
+<div id="AddShoppersWall" data-category="PRODUCT_CATEGORY_HERE"></div>
