@@ -1,0 +1,69 @@
+<script type="text/javascript"> 
+// To configure which login buttons are used here, go down to the comment that says BUTTONS HERE
+
+// Init code					
+function init() {
+   AddShoppersWidget.API.Event.bind("sign_in", createAccount);		
+};
+// Create Account 
+function createAccount(params) {		
+   if (params.source == "social_login") {				
+		services = ['facebook', 'google', 'linkedin', 'twitter', 'paypal'];
+		var data = AddShoppersWidget.API.User.signed_data(); 
+		for( var i=0; i < services.length; i++ ) {				
+			service = services[i];
+			if (AddShoppersWidget.API.User.signed(service)) {
+        		var email = data[service + '_email'];
+        		if (service == 'twitter') {
+           			//alert('popup get email'); 
+           			var email = prompt("Please enter your email", "");
+        		};
+        		if (email) {
+          			if (service !='twitter' ) {				   
+        		  		var name = data[service + '_firstname'] + '_' + data[service + '_lastname']; 
+          			} else {
+	       				var name = data[service + '_name']; 
+          			};
+	     			   name = name.replace(/ /g, '­-');
+              /*------- NAME AND EMAIL VARIABLES -------*/
+              /*
+              *variable: name == users first and last name separated by - so if your name is "John Doe" it should return be "John-Doe" stored in this variable
+              *variable: email == returns the users email address
+              */
+              //use these variables to either try and log the user in or create an account in your system
+              //name
+              //email
+              //ADD YOUR AJAX CALL / POST ETC... HERE
+	      			break; 
+        		};
+     		}; 
+  		};	
+  	};				
+}
+					
+// Bind events
+if (window.addEventListener) {			
+   window.addEventListener("load", init, false); 
+} else {
+   document.onreadystatechange = function() { 
+    if(document.readyState in {loaded: 1, complete: 1}) {
+	document.onreadystatechange = null; 
+       init();			
+    } 
+  }					
+} 
+</script>					
+
+
+<!-- DIV TAG TO ADD TO PAGE TO SHOW THE DESIRED SOCIAL LOGIN BUTTON 
+(these can be customized and there are 3 sizes "small","medium","big" as well) -->
+
+<!-- Facebook -->
+<div class="social-commerce-signin-facebook" data-style="logoandtext" data-size="small"></div>
+<!-- Paypal -->
+<div class="social-commerce-signin-paypal" data-style="logoandtext" data-size="small"></div>
+<!--LinkedIn -->				
+<div class="social-commerce-signin-linkedin" data-style="logoandtext" data-size="small"></div>
+<!-- Google -->				
+<div class="social-commerce-signin-google" data-style="logoandtext" data-size="small"></div>
+
