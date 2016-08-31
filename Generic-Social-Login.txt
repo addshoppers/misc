@@ -1,12 +1,10 @@
 <script type="text/javascript"> 
-// To configure which login buttons are used here, go down to the comment that says BUTTONS HERE
-
 // Init code					
 function init() {
-   AddShoppersWidget.API.Event.bind("sign_in", createAccount);		
+   AddShoppersWidget.API.Event.bind("sign_in", createSocialAccount);		
 };
 // Create Account 
-function createAccount(params) {		
+function createSocialAccount(params) {		
    if (params.source == "social_login") {				
 		services = ['facebook', 'google', 'linkedin', 'twitter', 'paypal'];
 		var data = AddShoppersWidget.API.User.signed_data(); 
@@ -25,6 +23,7 @@ function createAccount(params) {
 	       				var name = data[service + '_name']; 
           			};
 	     			   name = name.replace(/ /g, '­-');
+	     			   
               /*------- NAME AND EMAIL VARIABLES -------*/
               /*
               *variable: name == users first and last name separated by - so if your name is "John Doe" it should return be "John-Doe" stored in this variable
