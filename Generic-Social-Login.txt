@@ -3,44 +3,40 @@
 function init() {
    AddShoppersWidget.API.Event.bind("sign_in", createSocialAccount);		
 };
-// Create Account 
+
+// Create Social Account 
 function createSocialAccount(params) {		
-   if (params.source == "social_login") {				
-		services = ['facebook', 'google', 'linkedin', 'twitter', 'paypal'];
-		var data = AddShoppersWidget.API.User.signed_data(); 
-		for( var i=0; i < services.length; i++ ) {				
-			service = services[i];
-			if (AddShoppersWidget.API.User.signed(service)) {
-        		var email = data[service + '_email'];
-        		if (service == 'twitter') {
-           			//alert('popup get email'); 
-           			var email = prompt("Please enter your email", "");
-        		};
-        		if (email) {
-          			if (service !='twitter' ) {				   
-        		  		var name = data[service + '_firstname'] + '_' + data[service + '_lastname']; 
-          			} else {
-	       				var name = data[service + '_name']; 
-          			};
-	     			   name = name.replace(/ /g, '­-');
-	     			   
-              /*------- NAME AND EMAIL VARIABLES -------*/
-              /*
-              *variable: name == users first and last name separated by - so if your name is "John Doe" it should return be "John-Doe" stored in this variable
-              *variable: email == returns the users email address
-              */
-              //use these variables to either try and log the user in or create an account in your system
-              //name
-              //email
-              //ADD YOUR AJAX CALL / POST ETC... HERE
-	      			break; 
-        		};
-     		}; 
-  		};	
+    if (params.source == "social_login") {				
+		var data = AddShoppersWidget.API.User.signed_data(); 			
+		if (AddShoppersWidget.API.User.signed(params.network)) {	
+        	if (params.network == 'twitter') {
+           		//alert('popup get email'); 
+           		var email = prompt("Please enter your email", "");
+        	} else {
+        		var email = data[params.network + '_email'];
+        	}
+
+        	if (email) {
+          		if (params.network !='twitter' ) {				   
+        		  	var name = data[params.network + '_firstname'] + '_' + data[params.network + '_lastname']; 
+          		} else {
+	       			var name = data[params.network + '_name']; 
+          		};
+
+              	/*------- YOUR CODE HERE -------*/
+              	/*------- AJAX REQUEST USING NAME AND EMAIL VARIABLES FROM ABOVE -------*/
+              	//console.log(name);
+	     		//console.log(email);
+              	/*------- PASS EMAIL TO YOUR SYSTEM -------*/
+              	/*------- CREATE ACCOUNT FOR THE USER AND LOG THEM IN -------*/
+
+              	
+        	};
+     	}; 
   	};				
 }
-					
-// Bind events
+
+// Bind events to call init when page loads
 if (window.addEventListener) {			
    window.addEventListener("load", init, false); 
 } else {
@@ -65,4 +61,3 @@ if (window.addEventListener) {
 <div class="social-commerce-signin-linkedin" data-style="logoandtext" data-size="small"></div>
 <!-- Google -->				
 <div class="social-commerce-signin-google" data-style="logoandtext" data-size="small"></div>
-
