@@ -1,0 +1,17 @@
+<!--
+
+1. In the Shopify dashboard go to "Online store" -> "Themes" and click on the 3 dots in the top right, then click on "edit HTML/CSS" as seen here: http://prntscr.com/cetwvt
+
+2. Once in there click on the "theme.liquid" file and at the very bottom before the closing </body></html> tags paste your analytics code as seen here: http://i.prntscr.com/e46232d3a46e4d1cb64b3180dd26acee.png
+
+3. **note if you are using the code below replace the XXXXX with your shopID.
+
+-->
+
+Example Analytics code:
+
+<script type="text/javascript">
+var js = document.createElement('script'); js.type = 'text/javascript'; js.async = true; js.id = 'AddShoppers';
+js.src = ('https:' == document.location.protocol ? 'https://shop.pe/widget/' : 'http://cdn.shop.pe/widget/') + 'widget_async.js#XXXXX';
+document.getElementsByTagName("head")[0].appendChild(js);
+</script>
