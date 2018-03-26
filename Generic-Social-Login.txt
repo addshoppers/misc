@@ -1,49 +1,53 @@
 <script type="text/javascript"> 
-// Init code					
-function init() {
-   AddShoppersWidget.API.Event.bind("sign_in", createSocialAccount);		
+// Init code          
+function initSocialLogin() {
+  AddShoppersWidget.API.Event.bind("sign_in", addSocialLogin); //when a successful sign in is processedcall this function
 };
 
-// Create Social Account 
-function createSocialAccount(params) {		
-    if (params.source == "social_login") {				
-		var data = AddShoppersWidget.API.User.signed_data(); 			
-		if (AddShoppersWidget.API.User.signed(params.network)) {	
-        	if (params.network == 'twitter') {
-           		//alert('popup get email'); 
-           		var email = prompt("Please enter your email", "");
-        	} else {
-        		var email = data[params.network + '_email'];
-        	}
 
-        	if (email) {
-          		if (params.network !='twitter' ) {				   
-        		  	var name = data[params.network + '_firstname'] + '_' + data[params.network + '_lastname']; 
-          		} else {
-	       			var name = data[params.network + '_name']; 
-          		};
+// Create Account 
+function addSocialLogin(params) {    
+    var service = params.network; //set "service" as the network the user logged in with
+    var data = AddShoppersWidget.API.User.signed_data(); //this is the user data object returned from the network
+     if (AddShoppersWidget.API.User.signed(service)) { //if the user is signed in aka the request completed
+      	//console.log(data);
+        var email = data[service + '_email']; //set email to email returned from the social network
+        if (email) { //if the email exists
+            if (service !='twitter' ) {// most networks except twitter return first and last name as separate fields
+               	var firstName = data[service + '_firstname'];
+                var lastName = data[service + '_lastname'];
+                  var name = firstName + ' ' + lastName; 
+            } else { //twitter returns a single name field so it needs to be broken up
+                var name = data[service + '_name']; 
+                name = name.replace("_", " ");
+                var firstName = name.substr(0,name.indexOf(' '));
+	            var lastName = name.substr(name.indexOf(' ')+1);
+            }
+	        //console.log(firstName + lastName + email );
+	        //-----------Make your api request here to initiate the login process---------------
 
-              	/*------- YOUR CODE HERE -------*/
-              	/*------- AJAX REQUEST USING NAME AND EMAIL VARIABLES FROM ABOVE -------*/
-              	//console.log(name);
-	     		//console.log(email);
-              	/*------- PASS EMAIL TO YOUR SYSTEM -------*/
-              	/*------- CREATE ACCOUNT FOR THE USER AND LOG THEM IN -------*/
-
-              	
-        	};
-     	}; 
-  	};				
+	        //       jQuery.ajax({ //example api ajax request
+	        //             type: "GET",
+	        //             url: "https://example.com/some/api/url",
+	        //             data: { data: data,email: email },
+	        //             success: function (resp) {
+	        //                     console.log(resp);
+	        //             }
+	        //		});
+            }
+    }      
 }
+</script>
 
-// Bind events to call init when page loads
+<script type="text/javascript"> 
+// -------Bind events to call init when page loads
 if (window.addEventListener) {			
-   window.addEventListener("load", init, false); 
+   window.addEventListener("load", initSocialLogin, false); 
 } else {
    document.onreadystatechange = function() { 
     if(document.readyState in {loaded: 1, complete: 1}) {
 	document.onreadystatechange = null; 
-       init();			
+       initSocialLogin();			
     } 
   }					
 } 
