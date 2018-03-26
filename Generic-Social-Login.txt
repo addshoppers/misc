@@ -54,9 +54,7 @@ if (window.addEventListener) {
 </script>					
 
 
-<!-- DIV TAG TO ADD TO PAGE TO SHOW THE DESIRED SOCIAL LOGIN BUTTON 
-(these can be customized and there are 3 sizes "small","medium","big" as well) -->
-
+<!-- ******* div tags to have AddShoppers Widget render social login buttons ******* -->
 <!-- Facebook -->
 <div class="social-commerce-signin-facebook" data-style="logoandtext" data-size="small"></div>
 <!-- Paypal -->
@@ -65,3 +63,17 @@ if (window.addEventListener) {
 <div class="social-commerce-signin-linkedin" data-style="logoandtext" data-size="small"></div>
 <!-- Google -->				
 <div class="social-commerce-signin-google" data-style="logoandtext" data-size="small"></div>
+<!-- Amazon -->				
+<div class="social-commerce-signin-amazon" data-style="logoandtext" data-size="small"></div>
+<!-- Twitter -->				
+<div class="social-commerce-signin-twitter" data-style="logoandtext" data-size="small"></div>
+
+
+<!-- ******* onclick calls for each social network to assing social login to any element on a page ******* -->
+<!-- <img src="abcxyz" onclick="AddShoppersWidget.sign('facebook');" /> -->
+AddShoppersWidget.sign('facebook');
+AddShoppersWidget.sign('google');
+AddShoppersWidget.sign('twitter');
+AddShoppersWidget.sign('amazon');
+AddShoppersWidget.sign('paypal');
+AddShoppersWidget.sign('linkedin');
