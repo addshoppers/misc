@@ -7,10 +7,16 @@ function initSocialLogin() {
 
 // Create Account 
 function addSocialLogin(params) {    
+    //PARAMS is an object that gets returned
+    //PARAMS EXAMPLE: {source: "widget", network: "google", event: "sign_in"}
+	
     var service = params.network; //set "service" as the network the user logged in with
     var data = AddShoppersWidget.API.User.signed_data(); //this is the user data object returned from the network
      if (AddShoppersWidget.API.User.signed(service)) { //if the user is signed in aka the request completed
       	//console.log(data);
+	//DATA another object gets returned with userdata gathered from the network
+	//{google_email: "mario@addshoppers.com", uuid: "1234567890", timestamp: 1534338253, google_firstname: "Mario", signature: "0987654321", timestamp: 12345, uuid: 34543j43j543j543j543j43543 }
+	     
         var email = data[service + '_email']; //set email to email returned from the social network
         if (email) { //if the email exists
             if (service !='twitter' ) {// most networks except twitter return first and last name as separate fields
@@ -23,6 +29,8 @@ function addSocialLogin(params) {
                 var firstName = name.substr(0,name.indexOf(' '));
 	        var lastName = name.substr(name.indexOf(' ')+1);
             }
+		
+		
 	        //console.log(firstName + lastName + email );
 	        //-----------Make your api request here to initiate the login process---------------
 
@@ -34,6 +42,9 @@ function addSocialLogin(params) {
 	        //                     console.log(resp);
 	        //             }
 	        //	 });
+		
+		
+		
             }
     }      
 }
