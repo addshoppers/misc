@@ -19,10 +19,14 @@ example: AddShoppersWidget.API.Behavioral.showSuccessModal("!234567890");
 //-----triggerOnModal(function, id) ­ Execute function when modal is shown / visible
 AddShoppersWidget.API.Behavioral.triggerOnModal(function(data){ 
 	console.log('this is a test', data);
+	//data returns {campaign: object, event: string}
+	//sample: campaign: {campaign_id: "12345", campaign_name: "test campaign", trigger: "custom"}, event: "BT_view"
 });
 //**for only this specific modal (recommended)
 AddShoppersWidget.API.Behavioral.triggerOnModal(function(data){ 
 	console.log('this is a test', data);
+	//data returns {campaign: object, event: string}
+	//sample: campaign: {campaign_id: "12345", campaign_name: "test campaign", trigger: "custom"}, event: "BT_view"
 }, campaign_id);
 example:
 AddShoppersWidget.API.Behavioral.triggerOnModal(function(data){ 
@@ -32,12 +36,14 @@ AddShoppersWidget.API.Behavioral.triggerOnModal(function(data){
 //-----triggerOnAbandon(function) ­ Execute function on abandon
 AddShoppersWidget.API.Behavioral.triggerOnAbandon(function(){ 
 	console.log('this is a test');
-  AddShoppersWidget.API.Behavioral.showModal("1234567890");
+  	AddShoppersWidget.API.Behavioral.showModal("1234567890");
 });
 
 //-----triggerOnSuccessModal(function, id) ­ Execute function on success view
 AddShoppersWidget.API.Behavioral.triggerOnSuccessModal(function(data){ 
 	console.log('this is a test', data);
+	//data returns {campaign: object, event: string}
+	//sample: campaign: {campaign_id: "12345", campaign_name: "test campaign", trigger: "custom"}, event: "BT_view"
 });
 //**for only a specific campaign do X on success
 AddShoppersWidget.API.Behavioral.triggerOnSuccessModal(function(data){ 
@@ -51,6 +57,8 @@ AddShoppersWidget.API.Behavioral.triggerOnSuccessModal(function(data){
 //-----triggerOnClose(function, id) ­ Execute js when the modal is closed
 AddShoppersWidget.API.Behavioral.triggerOnClose(function(data){
    console.log('this is a test', data);
+   //data returns {campaign: object, event: string}
+   //sample: campaign: {campaign_id: "12345", campaign_name: "test campaign", trigger: "custom"}, event: "BT_view"
 });
 //**do this only for a specific campaign (recommended)
 AddShoppersWidget.API.Behavioral.triggerOnClose(function(data){
@@ -64,6 +72,12 @@ AddShoppersWidget.API.Behavioral.triggerOnClose(function(data){
 //-----getCampaigns(function) ­ Get campaigns: 
 AddShoppersWidget.API.Behavioral.getCampaigns(function(data){ 
 	console.log(data);
+	//data returns an array of objects [ {}, {}, {}, {} ]
+	//sample: campaign: [{campaign_id: "12345", campaign_name: "test campaign", trigger: "custom"},
+	//			{campaign_id: "12345", campaign_name: "test campaign", trigger: "custom"},
+	//			{campaign_id: "12345", campaign_name: "test campaign", trigger: "custom"},
+	//			{campaign_id: "12345", campaign_name: "test campaign", trigger: "custom"}
+	//			]
 });
 
 //track events and put in false for trackConversion so that it wont steal attributions if we want to track clicks on certain elements
