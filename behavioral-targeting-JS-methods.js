@@ -82,3 +82,22 @@ AddShoppersWidget.API.Behavioral.getCampaigns(function(data){
 
 //track events and put in false for trackConversion so that it wont steal attributions if we want to track clicks on certain elements
 AddShoppersWidget.API.User.track(eventName, trackConversion);
+
+
+//successful email input, store email as string
+AddShoppersWidget.API.Behavioral.triggerOnSuccessModal(function(data){ 
+	console.log(data);
+	//get amm addshoppers email inputs in selector array
+    	var emailInputs = document.querySelectorAll(".addshop-b-mail-input");
+	//loop through them and get the entered email
+	for (i = 0; i < emailInputs.length; i++) {
+	    if( emailInputs[i].value.length > 0 ){
+			var email = emailInputs[i].value;
+			console.log(email);
+			//DO SOMETHING WITH EMAIL STRING
+			break;
+	    }
+	}
+}, "1234567890");
+
+
